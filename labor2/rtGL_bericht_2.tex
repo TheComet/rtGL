@@ -1,0 +1,29 @@
+\documentclass[notitlepage]{fhnwreport/fhnwreport}
+
+\input{preamble/packages}
+\input{preamble/title}
+
+\addbibresource{bibliography/bibliography.bib}
+
+\begin{document}
+    \maketitle
+    \input{sections/abstract}
+    \newpage
+
+    \tableofcontents
+
+    \twocolumn
+    \input{util/matlabcode}
+    \input{sections/introduction}
+    \input{sections/theory}
+    \input{sections/simulations}
+    \input{sections/results}
+    \input{sections/discussion}
+
+    \addcontentsline{toc}{section}{Literature}
+    %\newpage\printbibliography
+
+    \clearpage\onecolumn\appendix
+    \input{sections/appendix.tex}
+\end{document}
+
