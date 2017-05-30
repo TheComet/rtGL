@@ -80,7 +80,7 @@
   \setlength{\unitlength}{1cm}%
   \begin{picture}(0,0)
     \linethickness{0.025mm}
-    \put(-0.85,2.2){\mbox{\includegraphics[height=12mm]{fhnwreport/fhnwlogo.pdf}}}
+    \put(-0.85,2.2){\mbox{\includegraphics[height=12mm]{fhnwlogo/fhnwlogo.pdf}}}
   \end{picture}
   \par%
   \vskip 2em%
