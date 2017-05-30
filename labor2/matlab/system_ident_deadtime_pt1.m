@@ -48,12 +48,21 @@ xlim([-2, 40]);
 axis square
 set(gcf, 'Units', 'Inches', 'Position', [0, 0, 6, 6], 'PaperUnits', 'Inches', 'PaperSize', [6, 6]);
 
+% Bode plot
+figure, bode(G);
+hold on
+x = [10 10];
+y = [-1080 0];
+plot(x, y, 'r--');
+title('\fontsize{16}T_t * PT1 Bode Diagram');
+grid on;
+
 
 %% Design various P controllers
 %Kpcrit = Tg / (Tu * Ks);
 Kpcrit = 10^(35/20);  % Starts to overshoot
 %Tcrit = 0.265 - 0.148; % Empirically determined
-Kp(1) = Kpcrit; %* 0.5;
+Kp(1) = Kpcrit; * 0.5;
 Kp(2) = Kpcrit * 0.2;
 Kp(3) = Kpcrit * 4;
 Kp(4) = Kpcrit * 2.5; % (Playing around, this seems to be perfect)
