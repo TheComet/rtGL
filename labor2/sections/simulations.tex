@@ -37,12 +37,25 @@
 
 \subsection{Simulation with simulink}
 A simulation were done in simulink to compare the tracking behavior between simulation and experiment.
-First we determine the parameter of the controller with the simulation in the picture 1.
 The best value for the $PT_{1}$ we determine were $5.947$
 so our $PT_{1}$ element is from the form:
 \begin{equation}
 G(s) = \frac{1}{5.947s+1}
 \end{equation}
+For the dead time element we took the value $0.0750$. In the \ref{simulink} there are 5 different Block diagram. the first 3 diagram represent the simulation model of the plant. The last two Block Diagramm represent an implemented PID controller with and without a tracking behavior.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{simulink.png}
+    \label{simulink}
+    \caption{Block diagram of the Simulink simulation}
+\end{figure}
 
+Unfortunately the time in the laboratory was not enough to finish the exercise. So we don't had the time to analyse the tracking behavior of the electrical motor in the laboratory. However, in Simulink the tracking behavior were analysed and it can be seen in \ref{tracking}.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{slope_tracking.png}
+    \label{tracking}
+    \caption{Tracking behavior of the system}
+\end{figure}
