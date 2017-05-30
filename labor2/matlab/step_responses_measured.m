@@ -2,7 +2,6 @@ clear all, close all;
 
 load('measurements.mat');
 
-% Show measured step responses and compare them to the characteristic curve
 figure;
 subplot(121); grid on, grid minor, hold on
 plot(time, rpm);
