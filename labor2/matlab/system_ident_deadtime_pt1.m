@@ -1,4 +1,4 @@
-close all, clear all;
+close all, clear all; clc
 s = tf('s');
 
 % subroutines are located in this folder
@@ -93,4 +93,3 @@ for n = 1:3
 end
 title('PID Controllers')
 legend('Ziegler-Nichols', 'Chien-Hrones-Reswick');
-
