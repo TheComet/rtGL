@@ -39,17 +39,24 @@
 \subsection{Simulation with simulink}
 
 A simulation were done in  simulink  to  compare the tracking behavior between
-simulation and  experiment.  The best value for the $PT_{1}$ we determine were
-$5.947$ so our $PT_{1}$ element is from the form:
+simulation and  experiment. Unfortunately  the  time in the  laboratory  was  not  enough  to  finish  the exercise. So we don't had the time to analyse  the  tracking  behavior  of the electrical motor in the laboratory. However, in Simulink the tracking behavior
+were analysed and it can be seen in  Figure \ref{fig:tracking}. The best value for the $PT_{1}$ we determine were
+$5.962$, so our $PT_{1}$ element is from the form:
 
 \begin{equation}
-    G(s) = \frac{1}{5.947s+1}
+    G(s) = \frac{1}{5.962s+1}
 \end{equation}
 
-For   the   dead  time  element  we  took   the   value   $0.0750$.   In   the
+For   the   dead  time  element  we  took   the   value   $0.1655$.   In  the Figure 
 \ref{fig:simulink} there are 5 different Block diagram.  the  first  3 diagram
 represent  the  simulation  model  of  the  plant. The last two Block Diagramm
-represent an implemented PID controller  with and without a tracking behavior.
+represent an implemented PID controller with and without a tracking behavior.
+The best PID controller we obtained during the experiment have the values (Proportional $P$, Integral $I$ and Derivative $D$) :
+\begin{align*}
+    P &= 0.330 \\
+    I &= 0.660 \\
+    D &= 0.330
+\end{align*}
 
 \begin{figure}
     \centering
@@ -58,15 +65,25 @@ represent an implemented PID controller  with and without a tracking behavior.
     \label{fig:simulink}
 \end{figure}
 
-Unfortunately  the  time in the  laboratory  was  not  enough  to  finish  the
-exercise. So we don't had the time to analyse  the  tracking  behavior  of the
-electrical motor in the laboratory. However, in Simulink the tracking behavior
-were analysed and it can be seen in \ref{fig:tracking}.
+The smallest tracking behavior we obtained with the values:
+\begin{align*}
+    P &= 0.330 \\
+    I &= 0.660 \\
+    D &= 0.330
+\end{align*}
+which are the same as for the normal PID controller. In picture \ref{fig:tracking} one can see that the tracking behavior have a change of $180$ degree. That means that the electrical motor change his direction.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/slope.png}
+    \caption{The system without tracking.}
+    \label{fig:WithoutTracking}
+\end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{images/slope_tracking.png}
-    \caption{Tracking behavior of the system}
+    \caption{Tracking behavior of the system.}
     \label{fig:tracking}
 \end{figure}
 
