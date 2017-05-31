@@ -41,20 +41,6 @@ measured system  is of higher order. Adding more PT1 elements to our model can
 help make the approximation more  exact, but for this experiment we will stick
 to a single PT1 element.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\imagewidth]{images/Tt_PT1}
-    \caption{Step response comparison of calculated system $G_1(s)$ and the measured step response.}
-    \label{fig:Tt_PT1_step}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\imagewidth]{images/Tt_PT1_bode}
-    \caption{Bode-Plots of the model $G_1(s)$. The phase exceeds \SI{180}{\degree} at about \SI{-36}{\decibel}}
-    \label{fig:Tt_PT1_bode}
-\end{figure}
-
 By  looking  at  the  Bode-Diagram  of  the   model   $G_1(s)$   (see   figure
 \ref{fig:Tt_PT1_bode})  it  is  very  easy  to  determine  the  critical  gain
 $K_{s,crit}$. This is the  point at which the phase exceeds \SI{180}{\degree}.
@@ -65,13 +51,19 @@ $K_{s,crit}=\SI{36}{\decibel}$, or:
     K_{s,crit} = 10^{\frac{\SI{36}{\decibel}}{20}} \approx 63.1
 \end{equation}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\imagewidth]{images/Tt_PT1}
+    \caption{Step response comparison of calculated system $G_1(s)$ and the measured step response.}
+    \label{fig:Tt_PT1_step}
+\end{figure}
+
 The  closed  loop  transfer  function  of  $G_1(s)$  with  a  P-controller  is
 constructed:
 
-\begin{align}
-    T(s) &= \frac{H(s)G_1(s)}{1 + H(s)G_1(s)}  \\
-         &= \frac{K_{p,crit}\cdot G_1(s)}{1 + K_{p,crit}\cdot G_1(s)}
-\end{align}
+\begin{equation}
+    T(s) = \frac{H(s)G_1(s)}{1 + H(s)G_1(s)}
+\end{equation}
 
 Where  $H(s)$  is  simply  the  P controller. By setting $H(s)=K_{p,crit}$ and
 simulating a step  response,  we  obtain  a  system  that exhibits an undamped
@@ -82,10 +74,17 @@ now simply a matter of measuring two points in this graph.
     \tau_{crit} \approx 0.66
 \end{equation}
 
-\begin{figure}[b!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\imagewidth]{images/tcrit}
     \caption{Step response of the closed loop transfer function with $K_p=K_{p,crit}$}
     \label{fig:Tt_PT1_tcrit}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\imagewidth]{images/Tt_PT1_bode}
+    \caption{Bode-Plots of the model $G_1(s)$. The phase exceeds \SI{180}{\degree} at about \SI{-36}{\decibel}}
+    \label{fig:Tt_PT1_bode}
 \end{figure}
 

@@ -38,12 +38,6 @@ those  results  to  find  the  parameters  $n$  and  $r$.   This   method   of
 reverse-lookup   works   because   the   lookup   curves   are   monotonically
 increasing/decreasing (see figure \ref{fig:hudzovic}).
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\imagewidth]{images/hudzovic_curves_tu_tg.pdf}
-    \caption{Lookup curves generated with P. Hudzovic's equations. By measuring $T_u$ and $T_g$ it is possible to look up the parameters $n$, $r$ and $T$ which can be used together with equation \ref{eq:pt1_series} to construct an accurate transfer function of the measured system.}
-    \label{fig:hudzovic}
-\end{figure}
 
 In practice, it is sufficient to calculate about 50 step  response  curves for
 each order  $n$  and  interpolate  between  those  points  when performing the
@@ -62,12 +56,6 @@ transfer  function  $G_2(s)$  and  compares it to the measured step  response.
 $G_2(s)$ seems to be a much better approximation  than  the  transfer function
 $G_1(s)$ obtained in section \ref{sec:ident_Tt_PT1}.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\linewidth]{images/hudzovic}
-    \caption{Comparison of the calculated step response function $G_2(s)$ (using P. Hudzovic's method) and the measured step response of the motor.}
-    \label{fig:hudzovic_step}
-\end{figure}
 
 By looking  at  the Bode-Diagram of the transfer function $G_2(s)$ (see figure
 \ref{fig:hudzovic_bode}), we see one potential issue: This system  is a second
@@ -76,10 +64,25 @@ the parameter $K_{p,crit}$ cannot be  determined  for  any finite value of the
 P-controller's gain! As a result, it will not be possible to use the method of
 Ziegler-Nichols for determining controller parameters.
 
-\begin{figure}[t]
+\begin{figure}
+    \centering
+    \includegraphics[width=\imagewidth]{images/hudzovic_curves_tu_tg.pdf}
+    \caption{Lookup curves generated with P. Hudzovic's equations. By measuring $T_u$ and $T_g$ it is possible to look up the parameters $n$, $r$ and $T$ which can be used together with equation \ref{eq:pt1_series} to construct an accurate transfer function of the measured system.}
+    \label{fig:hudzovic}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{images/hudzovic}
+    \caption{Comparison of the calculated step response function $G_2(s)$ (using P. Hudzovic's method) and the measured step response of the motor.}
+    \label{fig:hudzovic_step}
+\end{figure}
+
+\begin{figure}
     \centering
     \includegraphics[width=\linewidth]{images/hudzovic_bode}
     \caption{Bode-Diagram of the transfer function $G_2(s)$, acquired using P. Hudzovic's method}
     \label{fig:hudzovic_bode}
 \end{figure}
 
+\clearpage

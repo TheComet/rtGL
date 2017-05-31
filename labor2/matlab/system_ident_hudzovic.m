@@ -51,7 +51,7 @@ bode(G);
 title('\fontsize{16}Hudzovic Bode Diagram');
 grid on;
 
-%% Design various P controllers
+% Design various P controllers
 Kpcrit = Tg / (Tu * Ks);
 Kp(1) = Kpcrit * 0.5;
 Kp(2) = Kpcrit * 0.2;

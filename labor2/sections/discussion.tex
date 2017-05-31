@@ -1,2 +1,18 @@
 \section{Discussion}
 
+The  methods  proposed  by  Ziegler-Nichols and Chien-Hrones-Reswick certainly
+don't yield good controllers by a long stretch, but they can serve as suitable
+starting  points.  Of course, if you  lack  the  facilities  or  knowledge  to
+optimise a controller properly, these methods are fairly easy to implement. In
+fact, you don't  even  need  a  computer to calculate appropriate controllers,
+these methods can be used with a pen and a paper and a little bit of fiddling.
+
+One of the drawbacks of the Ziegler-Nichols method is that it doesn't work for
+systems that can't be made unstabled  in  a  closed  loop with a P-controller.
+Such  was the case when using P. Hudzovic's system  identification  technique,
+which yielded a PT2 element.
+
+Choosing a deadtime element  and  PT1  element  combination  as  the model got
+around this issue,  as a deadtime element will \textit{always} become unstable
+at higher frequencies.
+

@@ -41,17 +41,23 @@ Tcrit = 4.55 - 3.89;
 
 % Design various P controllers
 Kp(1) = 0.5 * Kpcrit;   % Ziegler-Nichols
-Kp(2) = 0.3 * Tg/Tu/Ks; % Chien, Hrones und Reswick
+Kp(2) = 0.3 * Tg/Tu/Ks; % Chien, Hrones und Reswick (stör)
+Kp(3) = 0.3 * Tg/Tu/Ks; % Chien, Hrones und Reswick (führ)
 
 %figure; hold on, grid on, grid minor
 figure; hold on, grid on, grid minor
 for n = 1:3
     H = Kp(n);
-    T = G*H/(1 + G*H);
-    step(T, linspace(0, 7, 1000));
+    T = H/(1 + G*H);
+    step(T * dV, linspace(0, 7, 1000));
 end
-title('P Controllers')
-legend('Kp=0.5', 'Kp=0.2', 'Kp=0.8');
+title('\fontsize{16}P Controllers - Control Voltages')
+legend('\fontsize{12}Ziegler-Nichols', '\fontsize{12}Chien-Hrones-Reswick (disturbance rejection)', '\fontsize{12}Chien-Hrones-Reswick (good tracking)');
+ylabel('\fontsize{14}Voltage at input of motor');
+xlabel('\fontsize{14}Time (s)');
+axis square
+set(gcf, 'Units', 'Inches', 'Position', [0, 0, 6, 6], 'PaperUnits', 'Inches', 'PaperSize', [6, 6]);
+return;
 
 % Design various PI controllers
 Kp(1) = 0.45 * Kpcrit;  % Ziegler-Nichols
@@ -61,7 +67,7 @@ Kp(2) = 0.6 * Tg / Tu / Ks;  % Chien, Hrones und Reswick (stör)
 Ti(2) = 4 * Tu;
 
 Kp(3) = 0.35 * Tg / Tu / Ks;  % Chien, Hrones und Reswick (führ)
-Ti(3) = 1.2 * Tu;
+Ti(3) = 1.2 * Tg;
 
 figure; hold on, grid on, grid minor
 for n = 1:3
@@ -69,21 +75,25 @@ for n = 1:3
     T = G*H/(1 + G*H);
     step(T * Ks * dV + yoffset, linspace(0, 15, 1000));
 end
-title('PI Controllers')
-legend('Ziegler-Nichols', 'Chien-Hrones-Reswick (Störverhalten)', 'Chien-Hrones-Reswick (Störverhalten)');
+title('\fontsize{16}PI Controllers')
+legend('\fontsize{12}Ziegler-Nichols', '\fontsize{12}Chien-Hrones-Reswick (disturbance rejection)', '\fontsize{12}Chien-Hrones-Reswick (good tracking)');
+ylabel('\fontsize{14}Measured Motor Speed (rpm)');
+xlabel('\fontsize{14}Time (s)');
+axis square
+set(gcf, 'Units', 'Inches', 'Position', [0, 0, 6, 6], 'PaperUnits', 'Inches', 'PaperSize', [6, 6]);
 
 % Design PID controller
-Kp(1) = 0.6 * Kpcrit;
+Kp(1) = 0.6 * Kpcrit;  % Ziegler-Nichols
 Ti(1) = 0.5 * Tcrit;
 Td(1) = 0.12 * Tcrit;
 
-Kp(2) = 0.5 * Tcrit;
-Ti(2) = Tcrit;
-Td(2) = 0.5 * Tcrit;
+Kp(2) = 0.95 * Tg / Tu / Ks;  % Chien, Hrones und Reswick (stör)
+Ti(2) = 2.4 * Tu;
+Td(2) = 0.42 * Tu;
 
-Kp(3) = 0.12 * Kpcrit;
-Ti(3) = Tcrit;
-Td(3) = 0.5 * Tcrit;
+Kp(3) = 0.12 * Tg / Tu / Ks; % Chien, Hrones und Reswick (führ)
+Ti(3) = Tg;
+Td(3) = 0.5 * Tu;
 
 figure; hold on, grid on, grid minor
 for n = 1:3
@@ -91,5 +101,9 @@ for n = 1:3
     T = G*H/(1 + G*H);
     step(T * Ks * dV + yoffset, linspace(0, 15, 1000));
 end
-title('PID Controllers')
-legend('Ziegler-Nichols', 'Chien-Hrones-Reswick');
+title('\fontsize{16}PID Controllers')
+legend('\fontsize{12}Ziegler-Nichols', '\fontsize{12}Chien-Hrones-Reswick (disturbance rejection)', '\fontsize{12}Chien-Hrones-Reswick (good tracking)');
+ylabel('\fontsize{14}Measured Motor Speed (rpm)');
+xlabel('\fontsize{14}Time (s)');
+axis square
+set(gcf, 'Units', 'Inches', 'Position', [0, 0, 6, 6], 'PaperUnits', 'Inches', 'PaperSize', [6, 6]);

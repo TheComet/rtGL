@@ -5,7 +5,7 @@ input voltages and waited for  the  motor  to  reach  its  settling speed. The
 settling speed is then recorded and plotted in function of the  input  voltage
 (see figure \ref{fig:static_cc}).
 
-\begin{figure}[t]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{images/static_cc}
     \caption{Static characteristic curve of the plant (motor): Input voltage vs settling rotation speed.}
@@ -23,16 +23,17 @@ performed  two  step  response  experiments,  one in the non-linear region  of
 figure  \ref{fig:step_responses}  (left)  and   are  mapped  onto  the  static
 characteristic curve (right).
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\linewidth]{images/step_response}
-    \caption{Two step response experiments, one in a non-linear region and the other in a fairly linear region. Notice how the step response amplitude differs between the two regions.}
-    \label{fig:step_responses}
-\end{figure*}
 
 When  comparing  the  input  amplitudes  of   both  steps  (\SI{2}{\volt}  and
 \SI{8}{\volt}, respectively) to the  step  response  amplitudes  ($43$ rpm and
 $197$ rpm, respectively), we expect a perfectly linear system  to  satisfy the
 equation $\frac{43}{2} \stackrel{?}{=} \frac{197}{8}$, but this is clearly not
 the case.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/step_response}
+    \caption{Two step response experiments, one in a non-linear region and the other in a fairly linear region. Notice how the step response amplitude differs between the two regions.}
+    \label{fig:step_responses}
+\end{figure*}
 
