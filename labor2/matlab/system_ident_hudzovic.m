@@ -24,6 +24,7 @@ ydata = filtfilt(ones(1, iN)/iN, 1, rpm);
 [Tu, Tg] = characterise_curve(xdata, ydata);
 [T, r, order] = hudzovic_lookup(Tu, Tg);
 G = hudzovic_transfer_function(T, r, order);
+return;
 
 % The plant's transfer function is normalised on the Y axis to 1. We need
 % Ks and dV and the Y offset to calculate the correct step response

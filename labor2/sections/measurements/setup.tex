@@ -1,0 +1,34 @@
+\subsection{Measurement Setup}
+
+The setup consisted of 3 main components.
+
+\begin{itemize}
+    \item Plant
+    \item Controller
+    \item PC with the user interface running under MATLAB
+\end{itemize}
+
+The plant itself consisted of the following elements.
+
+\begin{itemize}
+    \item \textbf{Motor}: The motor used in the setup was a universally usable DC motor. The brushed DC motor is excited using permanent magnets.
+    \item \textbf{Tachometer}: The speed sensor which is physically connected to the motor is a tachometer generator. It yields a voltage signal that is proportional to the motor speed.
+\end{itemize}
+
+The controller consisted of an Arduino UNO  microcontroller along with a motor
+shield (Adafruit Motor Shield v2.3) and a  voltage  divider circuit. The motor
+shield is  based  on  an  H  bridge  and is capable of delivering the required
+current (as opposed to the Arduino UNO board itself).  The  voltage divider is
+required in order to transform the tachometer  signal into a signal compatible
+with the analog input.
+
+Microcontroller and PC are connected with a  USB  cable and communicate across
+the serial port.
+
+Additionally,  the  laboratory  setup  includes  a  circuit  that  allows  the
+simulation of an external  disturbance  (e.g.  a  sudden  increase of the load
+driven by the motor) by changing the position of a switch.
+
+The  rpm could be changed by an input control voltage ranging from  $-13V$  to
+$13V$.
+
