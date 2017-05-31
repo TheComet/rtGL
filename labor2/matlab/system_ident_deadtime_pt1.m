@@ -40,9 +40,8 @@ Kpcrit = 10^(35/20);
 Tcrit = 4.55 - 3.89;
 
 % Design various P controllers
-Kp(1) = 0.5 * Kpcrit;
-Kp(2) = 0.2 * Kpcrit;
-Kp(3) = 0.8 * Kpcrit;
+Kp(1) = 0.5 * Kpcrit;   % Ziegler-Nichols
+Kp(2) = 0.3 * Tg/Tu/Ks; % Chien, Hrones und Reswick
 
 %figure; hold on, grid on, grid minor
 figure; hold on, grid on, grid minor
@@ -55,14 +54,14 @@ title('P Controllers')
 legend('Kp=0.5', 'Kp=0.2', 'Kp=0.8');
 
 % Design various PI controllers
-Kp(1) = 0.45 * Kpcrit;
+Kp(1) = 0.45 * Kpcrit;  % Ziegler-Nichols
 Ti(1) = 0.85 * Tcrit;
 
-Kp(2) = 0.2 * Kpcrit;
-Ti(2) = 0.7 * Tcrit;
+Kp(2) = 0.6 * Tg / Tu / Ks;  % Chien, Hrones und Reswick (stör)
+Ti(2) = 4 * Tu;
 
-Kp(3) = 0.8 * Kpcrit;
-Ti(3) = 0.8 * Tcrit;
+Kp(3) = 0.35 * Tg / Tu / Ks;  % Chien, Hrones und Reswick (führ)
+Ti(3) = 1.2 * Tu;
 
 figure; hold on, grid on, grid minor
 for n = 1:3
@@ -71,7 +70,7 @@ for n = 1:3
     step(T * Ks * dV + yoffset, linspace(0, 15, 1000));
 end
 title('PI Controllers')
-legend('Kp=0.45, Ti=0.85', 'Kp=0.2, Ti=0.2', 'Kp=4, Ti=4');
+legend('Ziegler-Nichols', 'Chien-Hrones-Reswick (Störverhalten)', 'Chien-Hrones-Reswick (Störverhalten)');
 
 % Design PID controller
 Kp(1) = 0.6 * Kpcrit;

@@ -1,0 +1,66 @@
+\subsection{Tuning Rules According to Chien-Hrones-Reswick (Step Response Method)}
+
+This  method is an improvement of the  Ziegler-Nichols  method  and  uses  the
+system's step response characteristics $T_u$, $T_g$ and  $K_s$  (discussed  in
+section \ref{sec:characterisation}).
+
+The procedure of the Chien-Hrones-Reswick method is:
+
+\begin{enumerate}
+    \item Record the step response of the plant and measure the gain $K_{S}$, the delay time $T_{u}$ and the compensation time $T_{g}$.
+    \item Determine the controller parameters according to the tuning rules (see tables \ref{tab:CHR_rejection} and \ref{tab:CHR_tracking}).
+\end{enumerate}
+
+\begin{center}
+    \begin{threeparttable}
+        \begin{tabular}{cccc}
+            \toprule
+            Type & $K_p$                                    &  $T_{i}$            &  $T_{d}$ \\
+            \midrule
+            P    &  $0.3   \cdot\frac{T_g}{T_u \cdot K_s}$  &  -                  &  -                  \\
+            PI   &  $0.6   \cdot\frac{T_g}{T_u \cdot K_s}$  &  $4 \cdot T_u$      &  -                  \\
+            PID  &  $0.95  \cdot\frac{T_g}{T_u \cdot K_s}$  &  $2.4 \cdot T_u$    &  $0.42 \cdot T_u$   \\
+            \bottomrule
+        \end{tabular}
+        \caption{Table with controller parameters according to the Chien-Hrones-Reswick method (good disturbance rejection).}
+        \label{tab:CHR_rejection}
+    \end{threeparttable}
+\end{center}
+
+\begin{center}
+    \begin{threeparttable}
+        \begin{tabular}{cccc}
+            \toprule
+            Type & $K_p$                                    &  $T_{i}$            &  $T_{d}$ \\
+            \midrule
+            P    &  $0.3   \cdot\frac{T_g}{T_u \cdot K_s}$  &  -                  &  -                  \\
+            PI   &  $0.35  \cdot\frac{T_g}{T_u \cdot K_s}$  &  $1.2 \cdot T_g$    &  -                  \\
+            PID  &  $0.6   \cdot\frac{T_g}{T_u \cdot K_s}$  &  $T_g$              &  $0.5 \cdot T_u$    \\
+            \bottomrule
+        \end{tabular}
+        \caption{Table with controller parameters according to the Chien-Hrones-Reswick method (aperiodic behaviour, good tracking).}
+        \label{tab:CHR_tracking}
+    \end{threeparttable}
+\end{center}
+
+Based  on  the  ratio   of   $\lambda=\frac{T_{u}}{T_{g}}$,  we  can  say  how
+controllability the control plant is.
+
+\begin{center}
+    \begin{threeparttable}
+        \begin{tabular}{ccc}
+            \toprule
+            Ratio                     &  Controllability  & Difficulty \\
+            \midrule
+            $\lambda < 0.1$           &  very good        & small  \\ 
+            $0.1 \leq \lambda < 0.2$  &  good             & medium  \\ 
+            $0.2 \leq \lambda < 0.4$  &  fair             & large  \\ 
+            $0.4 \leq \lambda < 0.8$  &  bad              & very large  \\ 
+            $ \lambda \geq 0.2$       &  very bad         & \makecell{(special \\ measurements \\ required)}  \\ 
+            \bottomrule
+        \end{tabular}
+        \caption{Table showing approximate ratios and how ``good'' they are}
+        \label{tab:controllability}
+    \end{threeparttable}
+\end{center}
+

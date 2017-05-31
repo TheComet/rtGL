@@ -1,112 +1,11 @@
 \section{Theory}
 
-Responsible for the risk of instability of control circuits are the delays. It
-is therefore always necessary to ensure that a  system  is  stable. To achieve
-this we need to tune a PID controller.
+The  risk  of  instability in control circuits are caused by the delays. It is
+always  necessary to ensure that a system is stable. There exist  some  simple
+tuning rules (proposed by Ziegler-Nichols and Chien, Hrones and Reswick)  that
+allow us to calculate stable  parameters  for  P,  PI,  and  PID  controllers.
 
-Tuning  a PID controller  means  to  find  suitable  parameters  for  the  PID
-controller  for  a  given  application  so  that the application can  be  very
-effective. This is achieved by using Ziegler-Nichols and Chien-Hrones-Reswick.
-
-
-\subsection{Tuning Rules According to Ziegler-Nichols (Oscillation Method)}
-
-In this method it  is  assumed  that  there  are  higher-orders,  which can be
-described with a series connection of dead time element $T_{t}$ and a $PT_{1}$
-element.
-
-\begin{equation}
-    G_{s}(s) \approx \frac{K_{PS}}{1+sT_{1}} \cdot e^{-sT_{1}}
-\end{equation}
-
-If the controller  is  tentative  operated  with  a  P-controller,  so one can
-determine  the  critical  $K_{P}$  and  the  critical period $\tau_{crit}$  by
-increasing $K_{P}$ until the stability limit is reached.
-The procedure of Ziegler-Nichols is:
-
-\begin{enumerate}
-    \item Use a pure P controller and set a small gain $K_{P}$.
-    \item Increasing the gain $K_{P}$ until an undamped oscillation occurs.
-    \item Indentify the critical gain $K_{P,crit}$ and the critical period $\tau_{crit}$
-    \item According to table \ref{tab:ziegler_nichols} specifying the controllers parameter.
-\end{enumerate}
-
-\begin{center}
-    \begin{threeparttable}
-        \begin{tabular}{cccc}
-            \toprule
-            Type & $K_{P}$                   &  $T_{i}$                   &  $T_{d}$ \\
-            \midrule
-            P    &  $0.5  \cdot K_{P,crit}$  &  -                         &  -                         \\
-            PI   &  $0.45 \cdot K_{P,crit}$  &  $0.85 \cdot \tau_{crit}$  &  -                         \\
-            PID  &  $0.6  \cdot K_{P,crit}$  &  $0.5 \cdot \tau_{crit}$   &  $0.12 \cdot \tau_{crit}$  \\
-            \bottomrule
-        \end{tabular}
-        \caption{Table with controller parameters, according to the Ziegler-Nichols method (good disturbance rejection).}
-        \label{tab:ziegler_nichols}
-    \end{threeparttable}
-\end{center}
-
-The advantage of the Ziegler-Nichols is that he is simple to apply and because
-of that also  easy  to  understand. On the other side it is very risky because
-the control loop must be operated close to instability.  This can be depending
-on the system very dangerous and very expensive. Furthermore theoretically not
-all control plants can be made to oscillate  even  if  in  the  practice  most
-plants  oscillate  because  of  delays  and  non  linearities.  The  practical
-significance of this method is thus limited.
-
-
-\subsection{Tuning Rules According to Chien-Hrones-Reswick (Step Response Method)}
-
-The step response method is  an  improvement  of  the  Ziegler-Nichols method.
-Before using the step  response  method,  first  we  have  to  select the step
-amplitude. If the step amplitude is too small, the control plant behaves in an
-atypic way. This happens because of  small  disturbances which affect the step
-response. A good example for this is static friction. On the other side if the
-step amplitude is too large, then nonlinear effects can affect the behavior of
-the control plant.
-
-The procedure of Chien-Hrones-Reswick is:
-
-\begin{enumerate}
-    \item Recording the step response of the control plan and measure the gain $K_{S}$, the delay time $T_{u}$ and the compensation time $T_{g}$.
-    \item Determine the controller parameters according to the tuning rule (see \ref{tab:chien_hrones_reswick}
-\end{enumerate}
-
-\begin{center}
-    \begin{threeparttable}
-        \begin{tabular}{cccc}
-            \toprule
-            Type & $K_p$                             &  $T_{i}$            &  $T_{d}$ \\
-            \midrule
-            P    &  $0.3  \cdot\frac{T_{g}}{T_{u}}$  &  -                  &  -                  \\
-            PI   &  $0.35 \cdot\frac{T_{g}}{T_{u}}$  &  $1.2 \cdot T_{g}$  &  -                  \\
-            PID  &  $0.3  \cdot\frac{T_{g}}{T_{u}}$  &  $T_{g}$            &  $0.5 \cdot T_{u}$  \\
-            \bottomrule
-        \end{tabular}
-        \caption{Table with controller parameters according to the Chien-Hrones-Reswick method (aperiodic behaviour, good tracking).}
-        \label{tab:chien_hrones_reswick}
-    \end{threeparttable}
-\end{center}
-
-Based  on  the  ratio   of   $\lambda=\frac{T_{u}}{T_{g}}$,  we  can  say  how
-controllability the control plant is.
-
-\begin{center}
-    \begin{threeparttable}
-        \begin{tabular}{ccc}
-            \toprule
-            Ratio                     &  Controllability  & Difficulty \\
-            \midrule
-            $\lambda < 0.1$           &  very good        & small  \\ 
-            $0.1 \leq \lambda < 0.2$  &  good             & medium  \\ 
-            $0.2 \leq \lambda < 0.4$  &  fair             & large  \\ 
-            $0.4 \leq \lambda < 0.8$  &  bad              & very large  \\ 
-            $ \lambda \geq 0.2$       &  very bad         & \makecell{(special \\ measurements \\ required)}  \\ 
-            \bottomrule
-        \end{tabular}
-        \caption{Table showing approximate ratios and how ``good'' they are}
-        \label{tab:controllability}
-    \end{threeparttable}
-\end{center}
+\input{sections/theory/system_characterisation}
+\input{sections/theory/ziegler_nichols}
+\input{sections/theory/chien_hrones_reswick}
 
